@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+            <div class="auto-container">
+                <div class="d-flex justify-content-center align-items-center clearfix">
+                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                        <div class="content_block_one">
+                            <div class="content-box mr_40">
+                                <div class="sec-title mb_25">
+                                    <span class="sub-title">Donation</span>
+                                    <h2>Payment Successfull <i class="fas fa-check-circle"></i></h2>
+                                    <p>Thank you very much for the donation of {{ cs }}{{ order.amount }}</p>
+                                </div>
+                                <button type="submit" id="start-payment-button" class="theme-btn btn-one shadow - d-flex justify-content-center align-items-center" style="padding: 15px;">
+                                    <i class="fas fa-arrow-left"></i> &nbsp; Go Home 
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+
+        
+            
+        {% endblock content %}
+            

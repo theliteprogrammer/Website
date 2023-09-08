@@ -1,0 +1,116 @@
+{% extends 'partials/dashboard-base.html' %}
+{% load static  %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- {{form|crispy}} -->
+<style>
+    .row{
+        overflow: hidden;
+    }
+</style>
+    <div class="dashboard_content_wrapper">
+        <div class="dashboard dashboard_wrapper pr30 pr0-md">
+            {% include 'partials/dashboard-sidebar.html' %}
+            <div class="dashboard__main pl0-md">
+                <div class="dashboard__content bgc-gmart-gray">
+                    <div class="row pb50">
+                        <div class="col-lg-12">
+                            <div class="dashboard_title_area">
+                                <h2>Create New Waste</h2>
+                                <!-- <p class="para">Lorem ipsum dolor sit amet, consectetur.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="application_statics">
+                                <div class="account_user_deails dashboard_page">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Name of Waste Product</label>
+                                                    {{form.name}}
+                                                    <div id="emailHelp" class="form-text">Enter the waste name e.g <b>Old Newspaper Magazine</b></div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Category</label>
+                                                    {{form.category}}
+                                                    <div id="emailHelp" class="form-text">Choose a category that best suit the waste</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Disposal Instruction (Optional)</label>
+                                                    {{form.disposal_instructions}}
+                                                    <div id="emailHelp" class="form-text">Tell the system how to dispose of damaged</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Hazardous? </label>
+                                                    {{form.hazardous}}
+                                                    <div id="emailHelp" class="form-text">Is this waste hazardous?</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Recycleable?</label>
+                                                    {{form.recyclable}}
+                                                    <div id="emailHelp" class="form-text">Is this waste recyclable?</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Create Now <i class="fas fa-check-circle"></i> </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                    <div class="container">
+                        <div class="row items-center justify-content-center justify-content-md-between">
+                            <div class="col-auto">
+                                <div class="copyright-widget text-center text-lg-start d-block d-lg-flex mb15-md">
+                                    <p class="me-4">© 2022 Zeomart. All Rights Reserved</p>
+                                    <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Sitemap</a></p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="footer_bottom_right_widgets text-center text-lg-end">
+                                    <ul class="mb0">
+                                        <li class="list-inline-item mb20-340">
+                                            <select class="selectpicker show-tick">
+                    <option>Currency : USD</option>
+                    <option>Euro</option>
+                    <option>Pound</option>
+                    </select>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <select class="selectpicker show-tick">
+                    <option>Language: English</option>
+                    <option>Frenc</option>
+                    <option>Italian</option>
+                    <option>Spanish</option>
+                    <option>Turkey</option>
+                    </select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+        

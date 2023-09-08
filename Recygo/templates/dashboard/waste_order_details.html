@@ -1,0 +1,114 @@
+{% extends 'partials/dashboard-base.html' %}
+{% load static  %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- {{form|crispy}} -->
+<style>
+    .row{
+        overflow: hidden;
+    }
+</style>
+    <div class="dashboard_content_wrapper">
+        <div class="dashboard dashboard_wrapper pr30 pr0-md">
+            {% include 'partials/dashboard-sidebar.html' %}
+            <div class="dashboard__main pl0-md">
+                <div class="dashboard__content bgc-gmart-gray">
+                    <div class="row pb50">
+                        <div class="col-lg-12">
+                            <div class="dashboard_title_area">
+                                <h2 class="fw-bold">{{waste_plan.name}}</h2>
+                                <p class="para">Fill the form to complete plan subscription</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="application_statics">
+                                <div class="account_user_deails dashboard_page">
+                                    <div class="row ">
+                                        <div class="col-lg-6 mb-4">
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Address</label>
+                                                            <input type="text" class="form-control" name="address" placeholder="Enter Full Address">
+                                                            <div style="color: rgba(128, 128, 128, 0.281);" class="form-text">Enter the address where the waste is located</div>
+        
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+                                                            <input type="text" class="form-control" name="phone" placeholder="Enter Valid Mobile NUmber">
+                                                            <div style="color: rgba(128, 128, 128, 0.281);" class="form-text">Enter a mobile that we could use to reach you</div>
+        
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                                <button type="submit" class="btn btn-primary">Continue to Checkout <i class="fas fa-arrow-right"></i> </button>
+                                            </form>
+                                        </div>
+                                        
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="card h-100">
+                                                <img src="{{ waste_plan.image.url }}" style="width: 100%; height: 250px; object-fit: cover;" class="card-img-top" alt="{{waste_plan.name}}'s image">
+                                                <div class="card-body">
+                                                <h5 class="card-title"><b>{{waste_plan.name}}</b></h5>
+                                                <p class="card-text">{{ waste_plan.description }}</p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                                <small class="text-dark" style="color: black; font-size: 14px;"><b>Price: {{ cs }}{{ waste_plan.price }}</b></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                    <div class="container">
+                        <div class="row items-center justify-content-center justify-content-md-between">
+                            <div class="col-auto">
+                                <div class="copyright-widget text-center text-lg-start d-block d-lg-flex mb15-md">
+                                    <p class="me-4">© 2022 Zeomart. All Rights Reserved</p>
+                                    <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Sitemap</a></p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="footer_bottom_right_widgets text-center text-lg-end">
+                                    <ul class="mb0">
+                                        <li class="list-inline-item mb20-340">
+                                            <select class="selectpicker show-tick">
+                    <option>Currency : USD</option>
+                    <option>Euro</option>
+                    <option>Pound</option>
+                    </select>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <select class="selectpicker show-tick">
+                    <option>Language: English</option>
+                    <option>Frenc</option>
+                    <option>Italian</option>
+                    <option>Spanish</option>
+                    <option>Turkey</option>
+                    </select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+        

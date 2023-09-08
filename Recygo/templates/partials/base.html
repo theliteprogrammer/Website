@@ -1,0 +1,454 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>Waste Management System</title>
+
+    <!-- Fav Icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,800;1,9..144,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link href="{% static 'assets/css/font-awesome-all.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/owl.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/jquery.fancybox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/nice-select.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/elpath.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/color/theme-color.css' %}" id="jssDefault" rel="stylesheet">
+    <link href="{% static 'assets/css/switcher-style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/rtl.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/banner.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/feature.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/about.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/service.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/funfact.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/chooseus.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/cta.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/materials.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/testimonial.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/project.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/news.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/module-css/subscribe.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <base href="{% static '/' %}">
+
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="{% static 'assets/css/custom.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon-ligatures@2.5.0/fonts/remixicon.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+    <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+
+
+<!-- page wrapper -->
+
+<body>
+
+    <div class="boxed_wrapper ltr">
+
+
+        <!-- preloader -->
+        <!-- <div class="loader-wrap">
+            <div class="preloader">
+                <div class="preloader-close">close</div>
+                <div id="handle-preloader" class="handle-preloader">
+                    <div class="animation-preloader">
+                        <div class="spinner"></div>
+                        <div class="txt-loading">
+                            <span data-text-preloader="w" class="letters-loading">
+                                w
+                            </span>
+                            <span data-text-preloader="a" class="letters-loading">
+                                a
+                            </span>
+                            <span data-text-preloader="s" class="letters-loading">
+                                s
+                            </span>
+                            <span data-text-preloader="t" class="letters-loading">
+                                t
+                            </span>
+                            <span data-text-preloader="i" class="letters-loading">
+                                i
+                            </span>
+                            <span data-text-preloader="x" class="letters-loading">
+                                x
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- preloader end -->
+
+
+
+        <!--Search Popup-->
+        <div id="search-popup" class="search-popup">
+            <div class="popup-inner">
+                <div class="upper-box clearfix">
+                    <figure class="logo-box pull-left"><a href="index.html"><img src="{{company.logo.url}}" alt=""></a></figure>
+                    <div class="close-search pull-right"><span class="far fa-times"></span></div>
+                </div>
+                <div class="overlay-layer"></div>
+                <div class="auto-container">
+                    <div class="search-form">
+                        <form method="post" action="index.html">
+                            <div class="form-group">
+                                <fieldset>
+                                    <input type="search" class="form-control" name="search-input" value="" placeholder="Type your keyword and hit" required>
+                                    <button type="submit"><i class="far fa-search"></i></button>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- main header -->
+        <header class="main-header">
+            
+
+            
+
+  
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo"><a href="index.html"><img src="{{company.logo.url}}" alt=""></a></figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light clearfix">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="/">Home</a></li>
+                                    <li class=""><a href="index.html">Services</a></li>
+                                    <li><a href="contact.html">About Us</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <ul class="menu-right-content">
+                            <li class="btn-box">
+                                
+                                <a href="#" class="theme-btn btn-one" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Donate</span></a>
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'dashboard:dashboard' %}" class="theme-btn btn-one"><span>Dashboard</span></a>
+                                <a href="{% url 'userauths:sign-out' %}" class="theme-btn btn-one"><span>Logout</span></a>
+                                {% else %}
+                                <a href="{% url 'userauths:sign-in' %}" class="theme-btn btn-one"><span>Login</span></a>
+                                <a href="{% url 'userauths:sign-up' %}" class="theme-btn btn-one"><span>Register</span></a>
+                                {% endif %}
+
+
+                                    
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-container">
+                    <div class="outer-box">
+                        <div class="logo-box">
+                            <figure class="logo"><a href="index.html"><img src="{{company.logo.url}}" alt=""></a></figure>
+                        </div>
+                        <div class="menu-area">
+                            <nav class="main-menu clearfix">
+                                <!--Keep This Empty / Menu will come through Javascript-->
+                            </nav>
+                            <ul class="menu-right-content">
+                                <li class="btn-box">
+                                    
+                                    {% if request.user.is_authenticated %}
+                                    <a href="{% url 'dashboard:dashboard' %}" class="theme-btn btn-one"><span>Dashboard</span></a>
+                                    <a href="{% url 'userauths:sign-out' %}" class="theme-btn btn-one"><span>Logout</span></a>
+                                    {% else %}
+                                    <a href="{% url 'userauths:sign-in' %}" class="theme-btn btn-one"><span>Login</span></a>
+                                    <a href="{% url 'userauths:sign-up' %}" class="theme-btn btn-one"><span>Register</span></a>
+                                    {% endif %}
+                                        
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="{% static 'assets/images/logo-2.png' %}" alt="" title=""></a></div>
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="contact-info">
+                    <ul>
+                        <li>
+                            <a href="#" class="theme-btn btn-one" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Donate</span></a> <br><br>
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'dashboard:dashboard' %}" class="theme-btn btn-one"><span>Dashboard</span></a>
+                            <a href="{% url 'userauths:sign-out' %}" class="theme-btn btn-one"><span>Logout</span></a>
+                            {% else %}
+                            <a href="{% url 'userauths:sign-in' %}" class="theme-btn btn-one"><span>Login</span></a><br><br>
+                            <a href="{% url 'userauths:sign-up' %}" class="theme-btn btn-one"><span>Register</span></a><br><br>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+                
+            </nav>
+        </div>
+        <!-- End Mobile Menu -->
+        {% if messages %} 
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible text-center" style="margin-top: 10px" >
+                    <strong>{{message}}</strong>
+                    <small><button type="button" class=" btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button></small>
+                </div>
+    
+                <script>
+                    setTimeout(() => {
+                    $(".alert").alert("close");
+                    }, 15000);
+                </script>
+            {% endfor %} 
+        {% endif %} 
+            
+            {% block content %}
+                
+            {% endblock content %}
+                
+
+
+        <!-- subscribe-section -->
+        <section class="subscribe-section">
+            <div class="pattern-layer">
+                <div class="pattern-1" style="background-image: url(assets/images/shape/shape-27.png);"></div>
+                <div class="pattern-2" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+                <div class="pattern-3" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+                <div class="pattern-4" style="background-image: url(assets/images/shape/shape-28.png);"></div>
+            </div>
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-xl-8 col-lg-12 col-md-12 offset-xl-2 content-column">
+                        <div class="content-box">
+                            <h2>Subscribe to our <br />newsletter</h2>
+                            <div class="form-inner">
+                                <form method="post" action="contact.html">
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Your email" required>
+                                        <button type="submit">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- subscribe-section end -->
+
+
+        <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-13.png);"></div>
+            <div class="footer-top">
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget logo-widget mr_60">
+                                <figure class="footer-logo"><a href="index.html"><img src="{% static 'assets/images/logo-2.png' %}" alt=""></a></figure>
+                                <div class="text-box">
+                                    <p>Lorem ipsum dolor sit amet consectetur diam ultricies leo etiam nibh tristique.</p>
+                                    <p>odio feugiat vitae libero vestibu viverra elementum luctus.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget links-widget ml_40">
+                                <div class="widget-title">
+                                    <h3>Links</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="links-list clearfix">
+                                        <li><a href="index.html">About Us</a></li>
+                                        <li><a href="index.html">Services</a></li>
+                                        <li><a href="index.html">Case</a></li>
+                                        <li><a href="index.html">Request Pickup</a></li>
+                                        <li><a href="index.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget schedule-widget ml_60 mr_70">
+                                <div class="widget-title">
+                                    <h3>Working Hours</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <p>Tincidunt neque pretium lectus donec risus.</p>
+                                    <ul class="schedule-list clearfix">
+                                        <li>Mon - Fri: 9:00AM - 6:00PM</li>
+                                        <li>Sat - Sun: 8:00AM - 4:00PM</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                            <div class="footer-widget contact-widget">
+                                <div class="widget-title">
+                                    <h3>Get In Touch</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="info-list mb_30 clearfix">
+                                        <li><i class="icon-3"></i>Add: New Hyde Park, NY 11040</li>
+                                        <li><i class="icon-2"></i>Email: <a href="mailto:example@info.com">example@info.com</a></li>
+                                        <li><i class="icon-4"></i>Phone: <a href="tel:3336660000">333 666 0000</a></li>
+                                    </ul>
+                                    <ul class="social-links clearfix">
+                                        <li><a href="index-3.html"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="index-3.html"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="index-3.html"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="index-3.html"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom centred">
+                <div class="auto-container">
+                    <div class="copyright">
+                        <p>Copyright 2023 by <a href="index.html">{{company.name}} </a> template All Right Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer -->
+
+
+
+        <!--Scroll to top-->
+        <div class="scroll-to-top">
+            <div>
+                <div class="scroll-top-inner">
+                    <div class="scroll-bar">
+                        <div class="bar-inner"></div>
+                    </div>
+                    <div class="scroll-bar-text">Go To Top</div>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll to top end -->
+
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Your Donation Will Help Us Reach Out to Many People </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="">
+                                <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                                <input type="text" name="full_name" class="form-control" id="exampleInputEmail1" placeholder="Enter your full name" aria-describedby="emailHelp">
+                              </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" name="email" placeholder="Enter a valid email address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Amount (ZAR)</label>
+                      <input type="number" class="form-control" name="donation_amount" id="exampleInputPassword1">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Continue <i class="fas fa-arrow-right"></i></button>
+                  </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+          
+        
+        
+
+
+    <!-- jequery plugins -->
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/wow.js' %}"></script>
+    <script src="{% static 'assets/js/validation.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'assets/js/appear.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %}"></script>
+    <script src="{% static 'assets/js/parallax-scroll.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/jQuery.style.switcher.min.js' %}"></script>
+
+    <!-- main-js -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+</body>
+<!-- End of .page_wrapper -->
+
+</html>

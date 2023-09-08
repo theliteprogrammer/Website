@@ -1,0 +1,20 @@
+<div class="dashboard__sidebar">
+    <div class="dashboard_sidebar_list">
+        <div class="sidebar_list_item">
+            <a href="{% url 'admin_v2:dashboard' %}" class="items-center {% if request.path == '/admin-v2/' %} -is-active {% endif %}"><i class="fas fa-th-large mr15"></i>Dashboard</a>
+        </div>
+        <div class="sidebar_list_item">
+            <a href="{% url 'admin_v2:subscribed_plans' %}" class="items-center {% if request.path == '/admin-v2/subscribed_plans/' %} -is-active {% endif %}"><i class="fas fa-recycle mr15"></i>Subscribed Plans</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'admin_v2:notifications' %}" class="items-center position-relative"><i class="fas fa-bell fa-shake mr15"></i>Notifications {% if noti_admin.count > 0 %} <span class="btn btn-danger">{{ noti_admin.count }}</span> {% endif %}</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'admin_v2:spending' %}" class="items-center"><i class="fas fa-dollar-sign mr15"></i>Revenue Tracker</a>
+        </div>
+        
+        <div class="sidebar_list_item ">
+            <a href="{% url 'userauths:sign-out' %}" class="items-center"><i class="flaticon-exit mr15"></i>Logout</a>
+        </div>
+    </div>
+</div>

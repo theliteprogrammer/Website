@@ -1,0 +1,20 @@
+<div class="dashboard__sidebar">
+    <div class="dashboard_sidebar_list">
+        <div class="sidebar_list_item">
+            <a href="{% url 'employee:dashboard' %}" class="items-center {% if request.path == '/dashboard/emp/' %} -is-active {% endif %}"><i class="fas fa-th-large mr15"></i>Dashboard</a>
+        </div>
+        
+        <div class="sidebar_list_item">
+            <a href="{% url 'employee:collected_waste' %}" class="items-center {% if 'collected_waste' in request.path %} -is-active {% endif %}"><i class="fas fa-recycle mr15"></i>Collected Waste</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'employee:notifications' %}" class="items-center position-relative"><i class="fas fa-bell fa-shake mr15"></i>Notifications {% if noti_employee.count > 0 %} <span class="btn btn-danger">{{ noti_employee.count }}</span> {% endif %}</a>
+        </div>
+        <div class="sidebar_list_item">
+            <a href="{% url 'employee:settings' %}" class="items-center {% if 'collected_waste' in request.path %} -is-active {% endif %}"><i class="fas fa-cogs mr15"></i>Settings</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'userauths:sign-out' %}" class="items-center"><i class="flaticon-exit mr15"></i>Logout</a>
+        </div>
+    </div>
+</div>

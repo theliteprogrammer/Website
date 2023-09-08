@@ -1,0 +1,86 @@
+{% extends 'employee/base.html' %}
+{% load static  %}
+{% block content %}
+    <div class="dashboard_content_wrapper">
+        <div class="dashboard dashboard_wrapper pr30 pr0-md">
+            {% include 'employee/sidebar.html' %}
+            <div class="dashboard__main pl0-md">
+                <div class="dashboard__content bgc-gmart-gray">
+                    <div class="row pb50">
+                        <div class="col-lg-12">
+                            <div class="dashboard_title_area">
+                                <h2>Dashboard</h2>
+                                <p class="para">Dashboard Overview and Quicklinks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-xxl-6">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Collected Waste</div>
+                                    <div class="title">{{ order.count }}</div>
+                                    <a href="{% url 'employee:collected_waste' %}" style="border-bottom: 1px dashed gray;">View All Collected Wastes</a>
+
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-recycle"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-6">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Notification</div>
+                                    <div class="title">{{ noti.count }} <small style="font-size: 12px;">New Notification</small> <span class="badge style2 text-center"></div>
+                                    <a href="{% url 'employee:notifications' %}?status=unread" style="border-bottom: 1px dashed gray;">View All New Notifications</a>
+
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-bell fa-shake"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="application_statics mb30">
+                                <div class="report_widget d-block d-sm-flex justify-content-center justify-content-sm-between">
+                                    <h4 class="title pl30">Collected Wastes</h4>
+                                    <ul class="mb0 ml30-520">
+                                    </ul>
+                                </div>
+                                <canvas id="myCharty" style="height:300px; ">$56,033</canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+	const labels = {{monthNumber|safe}};
+	const data = {
+	  labels: labels,
+	  datasets: [{
+	    label: 'Collected Wastes',
+	    backgroundColor: '#6700FF',
+	    borderColor: '#6700FF',
+	    data: {{collectedWastes}},
+	  }]
+	};
+
+	const config = {
+	  type: 'line',
+	  data,
+	  options: {
+      responsive: true
+    }
+	};
+
+	var myChart = new Chart(
+	    document.getElementById('myCharty'),
+	    config
+  	);
+
+</script>
+{% endblock content %}
+        

@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+            <div class="auto-container">
+                <div class="d-flex justify-content-center align-items-center clearfix">
+                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                        <div class="content_block_one">
+                            <div class="content-box mr_40">
+                                <div class="sec-title mb_25">
+                                    <span class="sub-title">Donation</span>
+                                    <h2>Review and Complete Donation</h2>
+                                </div>
+                                <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+               
+                                    <input type="hidden" name="public_key" value="FLWPUBK_TEST-a2c377d3cf56b37b9e660f85e26d2f8f-X" />
+                                    <input type="text" class="form-control mb-3" readonly name="customer[name]" value="{{donation.full_name}}" />
+                                    <input type="text" class="form-control mb-3" readonly name="customer[email]" value="{{donation.email}}" />
+                                    <input type="number" class="form-control mb-3" readonly name="amount" value="{{donation.amount}}" />
+                                    <input type="hidden" name="tx_ref" value="ID-{{donation.did}}" />
+                                    <input type="hidden" name="currency" value="ZAR" />
+                                    <input type="hidden" name="meta[token]" value="54" />
+                                    <input type="hidden" name="redirect_url" value="{{WEBSITE_URL}}/payment-completed/{{donation.did}}/?Success_id={{donation.success_id}}&Order_total={{donation.amount}}" />
+                                    <button type="submit" id="start-payment-button" class="theme-btn btn-one shadow - d-flex justify-content-center align-items-center" style="padding: 15px;">
+                                       Pay {{ cs }}{{donation.amount}} Now &nbsp; <i class="fas fa-credit-card"></i>
+                                     </button>
+                                  </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+
+        
+            
+        {% endblock content %}
+            

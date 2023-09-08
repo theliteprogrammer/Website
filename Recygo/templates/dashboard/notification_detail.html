@@ -1,0 +1,59 @@
+
+{% extends 'partials/dashboard-base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<!-- {{form|crispy}} -->
+  <div class="dashboard_content_wrapper">
+    <div class="dashboard dashboard_wrapper pr30 pr0-md">
+      {% include 'partials/dashboard-sidebar.html' %}
+
+      <div class="dashboard__main pl0-md">
+        <div class="dashboard__content bgc-gmart-gray">
+          <div class="row pb50">
+            <div class="col-lg-12">
+              <div class="dashboard_title_area">
+                <h2>Plan: {{noti.order.waste_plan.name}}</h2>
+                  <a href="{% url 'dashboard:dashboard' %}" class="btn btn-secondary" >Go back</a>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="row">
+            <div class="col-xl-8">
+              <div class="application_statics">
+                <h3 class="title pl20 mb30">Notification Detail</h3>
+                
+                <div class="account_user_deails dashboard_page">
+                  <div class="order_table table-responsive">
+                    <span class="d-flex align-items-center mb-2"><h4>Plan Name: &nbsp; </h4><h5>{{noti.order.waste_plan.name}}</h5></span>
+                    <span class="d-flex align-items-center mb-2"><h4>Price: &nbsp; </h4><h5>{{cs}}{{noti.order.price}}</h5></span>
+                    <hr>
+                    
+                    {% if noti.order.collector %}
+                    <span class="d-flex align-items-center mb-2"><h4>Collector's Name: &nbsp; </h4><h5>{{noti.order.collector.user.profile.full_name|title}}</h5></span>
+                    {% else %}
+                    <span class="d-flex align-items-center mb-2"><h4>Collector: &nbsp; </h4><h5 class="text-danger">Not Assigned Yet</h5></span>
+                    {% endif %}
+                      
+                    <span class="d-flex align-items-center mb-2"><h4>Collection Status: &nbsp; </h4><h5>{{noti.order.collected_status|title}}</h5></span>
+                    <span class="d-flex align-items-center mb-2"><h4>Collection Date: &nbsp; </h4><h5>{{noti.order.date_to_be_collected}}</h5></span>
+                    <hr>
+                    <span class="d-flex align-items-center mb-2"><h4>Full Name: &nbsp; </h4><h5>{{noti.order.user.profile.full_name }}</h5></span>
+                    <span class="d-flex align-items-center mb-2"><h4>Email Address: &nbsp; </h4><h5>{{noti.order.user.email }}</h5></span>
+                    <span class="d-flex align-items-center mb-2"><h4>Mobile Number: &nbsp; </h4><h5>{{noti.order.phone }}</h5></span>
+                    <span class="d-flex align-items-center mb-2"><h4>Address: &nbsp; </h4><h5>{{noti.order.address }}</h5></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endblock content %}

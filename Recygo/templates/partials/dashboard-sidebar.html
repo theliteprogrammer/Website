@@ -1,0 +1,29 @@
+<div class="dashboard__sidebar">
+    <div class="dashboard_sidebar_list">
+        <div class="sidebar_list_item">
+            <a href="{% url 'dashboard:dashboard' %}" class="items-center {% if request.path == '/dashboard/' %} -is-active {% endif %}"><i class="fas fa-th-large mr15"></i>Dashboard</a>
+        </div>
+        <div class="sidebar_list_item">
+            <a href="{% url 'dashboard:waste_plans' %}" class="items-center {% if request.path == '/dashboard/waste_plans/' %} -is-active {% endif %}"><i class="fas fa-recycle mr15"></i>New Waste Plan</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'dashboard:invoices' %}" class="items-center"><i class="flaticon-folder mr15"></i>Invoices</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'dashboard:spending' %}" class="items-center"><i class="fas fa-dollar-sign mr15"></i>Spending Tracker</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'dashboard:notifications' %}" class="items-center position-relative"><i class="fas fa-bell fa-shake mr15"></i>Notifications {% if noti_.count > 0 %} <span class="btn btn-danger">{{ noti_.count }}</span> {% endif %}</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'dashboard:history' %}" class="items-center"><i class="flaticon-checked-box mr15"></i>History</a>
+        </div>
+        
+        <div class="sidebar_list_item ">
+            <a href="{% url 'dashboard:settings' %}" class="items-center"><i class="flaticon-settings mr15"></i>Settings</a>
+        </div>
+        <div class="sidebar_list_item ">
+            <a href="{% url 'userauths:sign-out' %}" class="items-center"><i class="flaticon-exit mr15"></i>Logout</a>
+        </div>
+    </div>
+</div>

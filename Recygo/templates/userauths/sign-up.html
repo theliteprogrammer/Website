@@ -1,0 +1,74 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-12">
+                <div class="card-body p-md-5 mx-md-4">
+  
+                  <div class="text-center">
+                    <img src="{% static 'assets/images/logo.png' %}"
+                      style="width: 185px;" alt="logo">
+                    <h4 class="mt-4 pb-1 mb-5">Create an account</h4>
+                  </div>
+
+                  
+                  {% if form.errors %}
+                    <div class="alert-danger alert">
+                      <strong>{{ form.errors }}</strong>
+                    </div>
+                  {% endif %}
+  
+                  <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+
+                        <div class="form-outline col-lg-12 mb-2">
+                            <label class="form-label" for="form2Example11">Full Name</label>
+                            {{form.full_name}}
+                        </div>
+
+                        <div class="form-outline col-lg-6 mb-1">
+                            <label class="form-label" for="form2Example22">Email</label>
+                            {{form.email}}
+                        </div>
+    
+                        <div class="form-outline col-lg-6 mb-1">
+                            <label class="form-label" for="form2Example22">Username</label>
+                            {{form.username}}
+                        </div>
+
+                        <div class="form-outline col-lg-6 mb-1">
+                            <label class="form-label" for="form2Example22">Password</label>
+                            {{form.password1}}
+                        </div>
+
+                        <div class="form-outline col-lg-6 mb-1">
+                            <label class="form-label" for="form2Example22">Confirm Password</label>
+                            {{form.password2}}
+                        </div>
+                    </div>
+  
+                    <div class="pt-1 mb-5 pb-1">
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 mt-3" type="submit">Create Account</button> <br>
+                    </div>
+  
+                    
+  
+                  </form>
+  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

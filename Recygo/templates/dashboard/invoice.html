@@ -1,0 +1,176 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="auto parts, baby store, ecommerce, electronics, fashion, food, marketplace, modern, multi vendor, multipurpose, organic, responsive, shop, shopping, store">
+<meta name="description" content="Zeomart - Multi-Vendor & Marketplace HTML Template">
+<meta name="CreativeLayers" content="ATFN">
+<!-- css file -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/ace-responsive-menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashbord_navitaion.css' %}">
+<!-- Responsive stylesheet -->
+<!-- Title -->
+<title>{{company.name}} - INV-#{{order.oid}}</title>
+<!-- Favicon -->
+<link href="images/favicon.ico" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+<link href="images/favicon.ico" sizes="128x128" rel="shortcut icon" />
+<!-- Apple Touch Icon -->
+<link href="images/apple-touch-icon-60x60.png" sizes="60x60" rel="apple-touch-icon">
+<link href="images/apple-touch-icon-72x72.png" sizes="72x72" rel="apple-touch-icon">
+<link href="images/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
+<link href="images/apple-touch-icon-180x180.png" sizes="180x180" rel="apple-touch-icon">
+<style>
+  ul,li{
+     list-style: none;
+  }
+  *{
+    font-family: poppins;
+  }
+  body{
+    font-family: poppins;
+
+  }
+</style>
+</head>
+<body>
+<div class="wrapper ovh">
+  <section class="our-invoice bgc-gmart-gray pb200" >
+    <div class="container">
+      <div class="row mb30">
+        <div class="col-lg-12">
+          <div class="float-start w100">
+            <a class="invoice_down_pfrint btn-thm btn " id="myInput" onclick="window.print()">Print</a>
+            <a class="invoice_down_pfrint btn-dark btn " href="{% url 'dashboard:invoices' %}">Go back</a>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-lg-12">
+          <div class="invoice_table shadow">
+            <div class="wrapper">
+              <div class="row mb20">
+                <div class="col-lg-7">
+                  <div class="main_logo"><span class="logo_title">{{company.name}} <span class="text-thm">.</span></span></div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="invoice_deails">
+                    <h4 class="float-start"><b>Invoice ID #{{order.oid}}</b></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt50">
+                <div class="col-sm-6 col-lg-7">
+                  <div class="invoice_date mb70">
+                    <div class="title"><b>Invoice date</b></div>
+                    <h5 class="mb0">{{order.date}}</h5>
+                  </div>
+                  
+                </div>
+                <br><br>
+                <div class="col-sm-6 col-lg-5">
+                  <div class="invoice_address mt-4 pt-4">
+                    <h4 class="m-0"><strong>Customer</strong></h4>
+                    
+                    <h5>Name: {{order.user.profile.full_name|title}}</h5>
+                    <p>Address: {{order.address}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt50">
+                <div class="col-lg-12">
+                  <div class="table-responsive invoice_table_list">
+                    <table class="table">
+                      <thead class="thead-light">
+                        <tr class="tblh_row">
+                          <th class="tbleh_title" scope="col">Product</th>
+                          <th class="tbleh_title" scope="col">Price</th>
+                          <th class="tbleh_title" scope="col">Vat</th>
+                          <th class="tbleh_title" scope="col">Collection Fee</th>
+                          <th class="tbleh_title" scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="bb1">
+                          <th class="tbl_title d-flex align-items-center" scope="row">
+                            <a href=""> <img src="{{order.waste_plan.image.url}}" style="width: 60px; height: 60px; border-radius: 10px; object-fit: cover;" alt="{{ i.product }}"> </a>
+                            <p style="padding-left: 10px;" class="text-dark"><b><a href="">{{ order.waste_plan.name }}</a></b> <br> </p> <br>
+                          </th>
+                          <td class="tbl_title">{{ cs }}{{order.waste_plan.price}}</td>
+                          <td class="tbl_title">{{ cs }}{{order.vat}}</td>
+                          <td class="tbl_title">Free</td>
+                          <td class="tblpr_title">{{ cs }}{{i.total}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <br><br>
+                <div class="col-lg-12 col-xl-12 float-fend">
+                    <div class="order_sidebar_widget checkout_page mb30 mb30">
+                        <h4 class="title">Your Order</h4>
+                        <ul>
+                           <li class="subtitle">
+                              <p>Sub Total <span class="float-end totals">{{ cs }}{{order.price|floatformat:2}}</span></p>
+                           </li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                           <li class="subtitle">
+                              <p>Collection Fee <span class="float-end totals">Free</span></p>
+                           </li>
+                           
+                           <li class="subtitle">
+                            <p>Tax <span class="float-end totals">{{ cs }}{{ order.vat|floatformat:2 }}</span></p>
+                            </li>
+                           <li class="subtitle">
+                              <p>Total <span class="float-end totals">{{cs}}{{order.price|floatformat:2}}</span></p>
+                           </li>
+                        </ul>
+                     </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="invoice_footer">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="invoice_footer_content text-center">
+                    <ul>
+                      <li class="list-inline-item"><a href="{{company.website_address}}">{{company.website_address}}</a></li>
+                      <li class="list-inline-item"><a href="mailto:{{company.email}}">{{company.email}}</a></li>
+                      <li class="list-inline-item"><a href="tel:{{company.phone}}">{{company.phone}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
+</div>
+<!-- Wrapper End -->
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.mmenu.all.js' %}"></script>
+<script src="{% static 'js/ace-responsive-menu.js' %}"></script>
+<script src="{% static 'js/chart.min.js' %}"></script><script src="{% static 'js/parallax.js' %}"></script><script src="{% static 'js/jquery-scrolltofixed-min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script><script src="{% static 'js/slider.js' %}"></script>
+<script src="{% static 'js/dashboard-script.js' %}"></script>
+<!-- Custom script for all pages --> 
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

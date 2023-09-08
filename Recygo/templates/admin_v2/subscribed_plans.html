@@ -1,0 +1,111 @@
+{% extends 'admin_v2/base.html' %}
+
+{% load static  %}
+{% block content %}
+<style>
+    th, td{
+        white-space: nowrap;
+    }
+</style>
+    <div class="dashboard_content_wrapper">
+        <div class="dashboard dashboard_wrapper pr30 pr0-md">
+            {% include 'admin_v2/sidebar.html' %}
+            <div class="dashboard__main pl0-md">
+                <div class="dashboard__content bgc-gmart-gray">
+                  <div class="row pb50">
+                    <div class="col-lg-12">
+                      <div class="dashboard_title_area">
+                        <h2>All Subscribed Plans</h2>
+                        <p class="para">All Order History</p>
+                        <!-- <a href="{% url 'admin_v2:subscribed_plans' %}?oid=paid" class="btn btn-success">View Paid Plan</a>
+                        <a href="{% url 'admin_v2:subscribed_plans' %}?oid=unpaid" class="btn btn-secondary">View Unpaid Plans</a>
+                        <a href="{% url 'admin_v2:subscribed_plans' %}?oid=paid" class="btn btn-success">View Collected</a>
+                        <a href="{% url 'admin_v2:subscribed_plans' %}?oid=paid" class="btn btn-danger">View Uncollected</a> -->
+                        <!-- Example split danger button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger">Filter <i class="fas fa-sliders"></i> </button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'admin_v2:subscribed_plans' %}">View All</a></li>
+                            <li><a class="dropdown-item" href="{% url 'admin_v2:subscribed_plans' %}?oid=paid">Paid Plans</a></li>
+                            <li><a class="dropdown-item" href="{% url 'admin_v2:subscribed_plans' %}?oid=unpaid">Unpaid Plans</a></li>
+                            <li><a class="dropdown-item" href="{% url 'admin_v2:subscribed_plans' %}?oid=collected">Collected Waste</a></li>
+                            <li><a class="dropdown-item" href="{% url 'admin_v2:subscribed_plans' %}?oid=uncollected">Un-collected Waste</a></li>
+                            </ul>
+                        </div>
+  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-12">
+                      <div class="dashboard_product_list account_user_deails">
+                        <div class="row d-block d-sm-flex justify-content-center justify-content-sm-between">
+                          <div class="col-sm-6 col-lg-4">
+                            <div class="dashboard_page header_search_widget mb30 mb15-520">
+                              <form class="input-group" method="GET">
+                                <input type="text" name="oid" class="form-control" placeholder="Search Order By ID" aria-label="Recipient's username">
+                                <div class="input-group-append">
+                                  <button class="btn" type="submit"><span class="fa fa-search"></span></button>
+                                </div>
+                              </fo>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        <div class="order_table table-responsive">
+                          <table class="table">
+                            <thead class="table-light">
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col"></th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                
+                            {% for o in orders %}
+                              <tr>
+                                <th scope="row">#{{o.oid}}</th>
+                                <td>{{o.waste_plan.name}}</td>
+                                <td></td>
+                                <td class="action"><span><small>{{o.date}}</small></span></td>
+                                <td>{{o.payment_status|title}}</td>
+                                <!-- <td class="status"><span class="style1">Delivered</span></td> -->
+                                <td>{{o.collected_status|title}}</td>
+                                <td>{{ cs }}{{o.price}}</td>
+                                
+                                <td class="editing_list align-middle">
+                                        <ul>
+                                            <li class="list-inline-item mb-1">
+                                            <a href="{% url 'admin_v2:subscribed_plan_detail' o.oid %}" ><span class="fas fa-eye text-success"></span></a>
+                                            </li>
+                                            
+                                        </ul>
+                                </td>
+
+                              </tr>
+                            {% empty %}
+                            <tr>
+                              <td>No Data Found</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+{% endblock content %}
+        

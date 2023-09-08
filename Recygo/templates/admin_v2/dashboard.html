@@ -1,0 +1,192 @@
+{% extends 'admin_v2/base.html' %}
+{% load static  %}
+{% block content %}
+    <div class="dashboard_content_wrapper">
+        <div class="dashboard dashboard_wrapper pr30 pr0-md">
+            {% include 'admin_v2/sidebar.html' %}
+            <div class="dashboard__main pl0-md">
+                <div class="dashboard__content bgc-gmart-gray">
+                    <div class="row pb50">
+                        <div class="col-lg-12">
+                            <div class="dashboard_title_area">
+                                <h2>Dashboard</h2>
+                                <p class="para">Dashboard Overview and Quicklinks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-xxl-3">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">All Users</div>
+                                    <div class="title">{{users.count}}</div>
+                                    
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-user"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-3">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">All Plans</div>
+                                    <div class="title">{{plans.count}}</div>
+                                    <a href="/admin/core/wasteplan/"style="border-bottom: 1px dashed gray;">View All New Notifications</a>
+                                    
+                                </div>
+                                <div class="icon text-center mt-4"><i class="flaticon-sent"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-3">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Subscribed Plans</div>
+                                    <div class="title">{{order.count}}</div>
+                                    <a href="{% url 'admin_v2:subscribed_plans' %}?oid=paid" style="border-bottom: 1px dashed gray;">View All New Notifications</a>
+
+                                    
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-check-circle "></i></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-3">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Collected Waste</div>
+                                    <div class="title">{{collected_status.count}}</div>
+                                    <a href="{% url 'admin_v2:subscribed_plans' %}?oid=collected" style="border-bottom: 1px dashed gray;">View All New Notifications</a>
+
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-recycle"></i></div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-lg-6 col-xxl-4">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Total Revenue</div>
+                                    <div class="title">{{ cs }}{{ total_amount|floatformat:2 }}</div>
+                                    <a href="{% url 'admin_v2:spending' %}" style="border-bottom: 1px dashed gray;">View Revenue Breakdown</a>
+
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-dollar-sign"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-4">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Notification</div>
+                                    <div class="title">{{ noti.count }} <small style="font-size: 12px;">New Notification</small> <span class="badge style2 text-center"></div>
+                                    <a href="{% url 'admin_v2:notifications' %}?status=unread" style="border-bottom: 1px dashed #0011fa">View All New Notifications</a>
+
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-bell fa-shake"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-4">
+                            <div class="d-flex justify-content-between statistics_funfact">
+                                <div class="details">
+                                    <div class="subtitle1">Active Employee</div>
+                                    <div class="title">{{ employee.count }}  </div>
+                                    <a href="/admin/core/employee/" style="border-bottom: 1px dashed gray;">View All Employees</a>
+
+                                </div>
+                                <div class="icon text-center mt-4"><i class="fas fa-users"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-7">
+                            <div class="application_statics mb30">
+                                <div class="report_widget d-block d-sm-flex justify-content-center justify-content-sm-between">
+                                    <h4 class="title pl30">Revenue Tracker</h4>
+                                    <ul class="mb0 ml30-520">
+                                    </ul>
+                                </div>
+                                <canvas id="myCharty" style="height:300px; ">$56,033</canvas>
+                            </div>
+                        </div>
+                        <div class="col-xl-5">
+                            <div class="application_statics mb30">
+                                <div class="report_widget d-block d-sm-flex justify-content-center justify-content-sm-between">
+                                    <h4 class="title pl30">Subscribed Plans</h4>
+                                    <ul class="mb0 ml30-520">
+                                    </ul>
+                                </div>
+                                <canvas id="myPieChart" style="height:300px; ">$56,033</canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+	const labels = {{monthNumber|safe}};
+	const data = {
+	  labels: labels,
+	  datasets: [{
+	    label: 'Amount Earned $',
+	    backgroundColor: [
+            '#7500fa',    // Color for the 'Red' segment
+        ],
+	    borderColor: '#0011fa',
+	    data: {{amountTotal}},
+	  }]
+	};
+
+	const config = {
+	  type: 'line',
+	  data,
+	  options: {
+      responsive: true
+    }
+	};
+
+	var myChart = new Chart(
+	    document.getElementById('myCharty'),
+	    config
+  	);
+
+</script>
+
+<script>
+    // Get the serialized data from Django context
+    const serializedData = '{{ serialized_data|safe }}';
+    const dataa = JSON.parse(serializedData);
+
+    // Create arrays for waste plan names and subscription counts
+    const wastePlanNames = [];
+    const subscriptionCounts = [];
+
+    // Populate the arrays from the serialized data
+    dataa.forEach(d => {
+        wastePlanNames.push(d.waste_plan__name);
+        subscriptionCounts.push(d.subscription_count);
+    });
+
+    // Create a pie chart using Chart.js
+    const ctx = document.getElementById('myPieChart').getContext('2d');
+    const myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: wastePlanNames,
+            datasets: [{
+                data: subscriptionCounts,
+                backgroundColor: [
+                    // Add your desired colors here
+                    'red', 'blue', 'green', 'yellow',
+                    // ...
+                ]
+            }]
+        },
+        options: {
+            // Your chart options here
+        }
+    });
+</script>
+
+{% endblock content %}
+        
