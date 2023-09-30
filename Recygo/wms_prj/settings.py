@@ -174,10 +174,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# C:\Users\Destiny Franks\AppData\Local\Programs\Python\Python311\python.exe
-
-# C:\Users\Destiny Franks\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\Scripts
-
 
 STATIC_URL = '/static/'
 
