@@ -197,13 +197,13 @@ def payment_success(request, oid, *args, **kwargs):
     success_id = request.GET.get('Success_id')
     order_total = request.GET.get('Order_total')
 
-    # if success_id and order_totals: 
+    # if success_id and order_total: 
     success_id = success_id.rstrip('/')
     order_total = order_total.rstrip('/')
     order = WasteOrder.objects.get(oid=oid, success_id=success_id)
     
     if order.price == Decimal(order_total):
-        if order.payment_status == "initiated": # begin
+        if order.payment_status == "initiated": # initiated
             order.payment_status = "paid"
             order.pickup_status = "processing"
             order.save()
