@@ -155,8 +155,10 @@
 <script>
 // Get the serialized data from Django context
 const serializedData = '{{ serialized_data|safe }}';
-const dataa = JSON.parse(serializedData);
-console.log("The data for reporting is: ", dataa);
+const serializedDonations = '{{ amountsdates|safe }}';
+const donationsData = JSON.parse(serializedData);
+const dataa = JSON.parse(serializedDonations);
+console.log("The data for DONATIONS is: ", donationsData);
 
 // Create an object to store grouped data
 const groupedData = {};

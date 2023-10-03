@@ -20,7 +20,7 @@ from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
 
 from user_panel.forms import WasteItemForm
-from core.models import Employee, WasteItem, WastePlan, WasteOrder, Notification
+from core.models import Employee, WasteItem, WastePlan, WasteOrder, Notification, Donation
 from admin_panel.forms import WasteOrderForm
 from addon.models import Company, BasicAddon
 from userauths.models import User
@@ -48,6 +48,7 @@ def dashboard(request):
     total_amount = WasteOrder.objects.filter(payment_status="paid").aggregate(total_amount=Sum("price"))['total_amount']
     noti = Notification.objects.filter(user=request.user, is_read=False)
     employee = Employee.objects.filter(active=True)
+    amountsdates = Donation.objects.all()
 
     output = (
        WasteOrder.objects
@@ -91,6 +92,7 @@ def dashboard(request):
         "monthNumber":monthNumber,
         "noti":noti,
         "employee":employee,
+        "amountdates":amountsdates
     }
     return render(request, "admin_v2/dashboard.html", context)
 
