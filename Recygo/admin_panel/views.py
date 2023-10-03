@@ -74,6 +74,7 @@ def dashboard(request):
     )
 
     serialized_data = json.dumps(list(waste_plans_subscribed))
+    serialized_donations = json.dumps(list(amountsdates))
     output = json.dumps(list(output))
 
     print("serialized_data =======",serialized_data)
@@ -92,7 +93,7 @@ def dashboard(request):
         "monthNumber":monthNumber,
         "noti":noti,
         "employee":employee,
-        "amountdates":amountsdates
+        "amountsdates":serialized_donations
     }
     return render(request, "admin_v2/dashboard.html", context)
 
