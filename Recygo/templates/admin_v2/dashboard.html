@@ -124,7 +124,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
-	const labels = '{{monthNumber|safe}}';
+	const labels = {{monthNumber|safe}};
 	const data = {
 	  labels: labels,
 	  datasets: [{
@@ -133,7 +133,7 @@
             '#7500fa',    // Color for the 'Red' segment
         ],
 	    borderColor: '#0011fa',
-	    data: '{{amountTotal}}',
+	    data: {{amountTotal}},
 	  }]
 	};
 
@@ -152,7 +152,7 @@
 
 </script>
 
-<script type="text/javascript">
+<script>
 // Get the serialized data from Django context
 const serializedData = '{{ serialized_data|safe }}';
 const dataa = JSON.parse(serializedData);
@@ -199,12 +199,6 @@ const myPieChart = new Chart(ctx, {
         // Your chart options here
     }
 });
-</script>
-
-<script type="text/javascript">
-    const serializedDonations = '{{ amountsdates|safe }}';
-    //const donationsData = JSON.parse(serializedDonations);
-    console.log("The donations data are: ",serializedData);
 </script>
 
 {% endblock content %}
