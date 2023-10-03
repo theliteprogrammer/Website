@@ -152,7 +152,7 @@
 
 </script>
 
-<script>
+<script type="text/javascript">
 // Get the serialized data from Django context
 const serializedData = '{{ serialized_data|safe }}';
 const dataa = JSON.parse(serializedData);
@@ -203,7 +203,8 @@ const myPieChart = new Chart(ctx, {
 
 <script type="text/javascript">
     const serializedDonations = '{{ amountsdates|safe }}';
-    const donationsData = JSON.parse(serializedDonations);
+    //const donationsData = JSON.parse(serializedDonations);
+    console.log("The donations data are: ",serializedData);
 </script>
 
 {% endblock content %}
