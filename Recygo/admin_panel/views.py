@@ -76,6 +76,12 @@ def dashboard(request):
     serialized_data = json.dumps(list(waste_plans_subscribed))
     output = json.dumps(list(output))
 
+        # Serialize donations data
+    donations_data = [{'name': donation.name} for donation in amountsdates]
+
+    # Convert to JSON and return as a response
+    serialized_donations_data = json.dumps(donations_data)
+
     print("serialized_data =======",serialized_data)
     print("output =======",output)
 
@@ -92,7 +98,7 @@ def dashboard(request):
         "monthNumber":monthNumber,
         "noti":noti,
         "employee":employee,
-        "amountsdates":amountsdates
+        "serialized_donations_data":serialized_donations_data
     }
     return render(request, "admin_v2/dashboard.html", context)
 
@@ -210,3 +216,5 @@ def spending(request):
         "total_amount":total_amount,
     }
     return render(request, "admin_v2/spending.html", context)
+
+

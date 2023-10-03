@@ -201,9 +201,9 @@ const myPieChart = new Chart(ctx, {
     }
 });
 
-const dataForDonations = '{{amountsdates|safe}}';
+const dataForDonations = '{{serialized_donations_data|safe}}';
 if(dataForDonations){
-    console.log("The data for the donations is: ",dataForDonations);
+    console.log("The data for the donations is: ",JSON.parse(dataForDonations));
 }
 
 </script>
