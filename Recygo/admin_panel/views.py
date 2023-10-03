@@ -77,7 +77,7 @@ def dashboard(request):
     output = json.dumps(list(output))
 
         # Serialize donations data
-    donations_data = [{'name': donation.name} for donation in amountsdates]
+    donations_data = [{'amount': donation.amount, "date":donation.date} for donation in amountsdates]
 
     # Convert to JSON and return as a response
     serialized_donations_data = json.dumps(donations_data)

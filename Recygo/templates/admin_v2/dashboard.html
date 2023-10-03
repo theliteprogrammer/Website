@@ -116,6 +116,16 @@
                                 <canvas id="myPieChart" style="height:300px; ">$56,033</canvas>
                             </div>
                         </div>
+                        <div class="col-xl-5">
+                            <div class="application_statics mb30">
+                                <div class="report_widget d-block d-sm-flex justify-content-center justify-content-sm-between">
+                                    <h4 class="title pl30">Donations History</h4>
+                                    <ul class="mb0 ml30-520">
+                                    </ul>
+                                </div>
+                                <canvas id="myBarChart" style="height:300px; "></canvas>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -205,6 +215,46 @@ const dataForDonations = '{{serialized_donations_data|safe}}';
 if(dataForDonations){
     console.log("The data for the donations is: ",JSON.parse(dataForDonations));
 }
+
+const dates = {};
+
+dataForDonations.forEach((donation)=>{
+const donationAmount = donation.amount;
+const donationDate = donation.date;
+
+dates[donationDate] = donationAmount;
+});
+
+const datesArray = Object.keys(dates);
+const donationAmounts = Object.values(dates);
+
+
+const labelsDates = datesArray;
+	const dataDates = {
+	  labels: labelsDates,
+	  datasets: [{
+	    label: 'Donation amount versus date',
+	    backgroundColor: [
+            '#7500fa',    // Color for the 'Red' segment
+        ],
+	    borderColor: '#0011fa',
+	    data: donationAmounts,
+	  }]
+	};
+
+        const configBarChart = {
+            type: 'bar', // Change this to 'bar' for a bar chart
+            data: dataDates,
+            options: {
+                responsive: true
+            }
+        };
+
+        var myChart = new Chart(
+            document.getElementById('myBarChart'),
+            configBarChart
+        );
+
 
 </script>
 
