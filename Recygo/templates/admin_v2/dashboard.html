@@ -158,8 +158,11 @@ const serializedData = '{{ serialized_data|safe }}';
 const dataa = JSON.parse(serializedData);
 console.log("The data for reporting is: ", dataa);
 
-const dataForDonations = {{amountsdates|safe}};
-console.log("The data for the donations is: ",dataForDonations);
+const dataForDonations = '{{amountsdates|safe}}';
+if(dataForDonations){
+    console.log("The data for the donations is: ",JSON.parse(dataForDonations));
+}
+
 // Create an object to store grouped data
 const groupedData = {};
 
