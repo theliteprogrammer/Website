@@ -156,7 +156,7 @@
 // Get the serialized data from Django context
 const serializedData = '{{ serialized_data|safe }}';
 const dataa = JSON.parse(serializedData);
-console.log("The data for reporting is: ", donationsData);
+console.log("The data for reporting is: ", dataa);
 
 // Create an object to store grouped data
 const groupedData = {};
