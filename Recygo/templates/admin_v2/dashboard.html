@@ -212,13 +212,14 @@ const myPieChart = new Chart(ctx, {
 });
 
 const dataForDonations = '{{serialized_donations_data|safe}}'; 
+const dataObjects = JSON.parse(dataForDonations);
 if(dataForDonations){
-    console.log("The data for the donations is: ",JSON.parse(dataForDonations));
+    //console.log("The data for the donations is: ",JSON.parse(dataForDonations));
 }
 
 const dates = {};
 
-dataForDonations.forEach((donation)=>{
+dataObjects.forEach((donation)=>{
 const donationAmount = donation.amount;
 const donationDate = donation.date;
 
