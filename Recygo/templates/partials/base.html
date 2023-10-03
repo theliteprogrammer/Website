@@ -145,7 +145,13 @@
             <div class="header-lower">
                 <div class="outer-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="index.html"><img src="{% static 'recygo_logo.png' %}" alt=""></a></figure>
+                        <!--<figure class="logo"><a href="index.html"><img src="{% static 'recygo_logo.png' %}" alt=""></a></figure>-->
+                        <figure class="logo">
+    <a href="{% static 'index.html' %}">
+        <img src="{% static 'recygo_logo.png' %}" alt="Your Logo">
+    </a>
+</figure>
+
                     </div>
                     <div class="menu-area">
                         <!--Mobile Navigation Toggler-->
@@ -158,8 +164,8 @@
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
                                     <li class="current"><a href="/">Home</a></li>
-                                  <!--  <li class=""><a href="index.html">Services</a></li>
-                                    <li><a href="contact.html">About Us</a></li>
+                                    <li class=""><a href="index.html">Donations</a></li>
+                                 <!--   <li><a href="contact.html">About Us</a></li>
                                     <li><a href="contact.html">Contact</a></li> -->
                                 </ul>
                             </div>
