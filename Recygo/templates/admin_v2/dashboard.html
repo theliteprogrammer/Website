@@ -153,39 +153,52 @@
 </script>
 
 <script>
-    // Get the serialized data from Django context
-    const serializedData = '{{ serialized_data|safe }}';
-    const dataa = JSON.parse(serializedData);
-    console.log("The data for reporting is: ",dataa);
-    // Create arrays for waste plan names and subscription counts
-    const wastePlanNames = [];
-    const subscriptionCounts = [];
+// Get the serialized data from Django context
+const serializedData = '{{ serialized_data|safe }}';
+const dataa = JSON.parse(serializedData);
+console.log("The data for reporting is: ", dataa);
 
-    // Populate the arrays from the serialized data
-    dataa.forEach(d => {
-        wastePlanNames.push(d.waste_plan__name);
-        subscriptionCounts.push(d.subscription_count);
-    });
+// Create an object to store grouped data
+const groupedData = {};
 
-    // Create a pie chart using Chart.js
-    const ctx = document.getElementById('myPieChart').getContext('2d');
-    const myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: wastePlanNames,
-            datasets: [{
-                data: subscriptionCounts,
-                backgroundColor: [
-                    // Add your desired colors here
-                    'red', 'blue', 'green', 'yellow',
-                    // ...
-                ]
-            }]
-        },
-        options: {
-            // Your chart options here
-        }
-    });
+// Iterate through the data and group by waste plan names
+dataa.forEach(d => {
+    const wastePlanName = d.waste_plan__name;
+    const subscriptionCount = d.subscription_count;
+
+    // Check if the waste plan name already exists in the groupedData
+    if (groupedData.hasOwnProperty(wastePlanName)) {
+        // If it exists, add the subscription count to the existing count
+        groupedData[wastePlanName] += subscriptionCount;
+    } else {
+        // If it doesn't exist, initialize it with the subscription count
+        groupedData[wastePlanName] = subscriptionCount;
+    }
+});
+
+// Create arrays for the grouped waste plan names and their subscription counts
+const groupedWastePlanNames = Object.keys(groupedData);
+const groupedSubscriptionCounts = Object.values(groupedData);
+
+// Create a pie chart using Chart.js
+const ctx = document.getElementById('myPieChart').getContext('2d');
+const myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: groupedWastePlanNames,
+        datasets: [{
+            data: groupedSubscriptionCounts,
+            backgroundColor: [
+                // You can add your desired colors here
+                'red', 'blue', 'green', 'yellow',
+                // ...
+            ]
+        }]
+    },
+    options: {
+        // Your chart options here
+    }
+});
 </script>
 
 {% endblock content %}
