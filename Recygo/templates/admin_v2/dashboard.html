@@ -124,7 +124,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
-	const labels = {{monthNumber|safe}};
+	const labels = '{{monthNumber|safe}}';
 	const data = {
 	  labels: labels,
 	  datasets: [{
@@ -133,7 +133,7 @@
             '#7500fa',    // Color for the 'Red' segment
         ],
 	    borderColor: '#0011fa',
-	    data: {{amountTotal}},
+	    data: '{{amountTotal}}',
 	  }]
 	};
 
