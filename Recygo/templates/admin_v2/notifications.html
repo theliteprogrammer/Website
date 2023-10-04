@@ -41,7 +41,7 @@
                                 <th scope="col">Waste Plan</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Collection Date</th>
-                                <th scope="col">Action</th>
+                               <!-- <th scope="col">Action</th>-->
                               </tr>
                             </thead>
                             <tbody>
@@ -51,7 +51,7 @@
                                 <th scope="row">#{{i.order.oid}}</th>
                                 <td>{{i.order.waste_plan.name}}</td>
                                 <td><b>{{ i.type }}</b></td>
-                                <td class="action"><span><small>{{i.order.date_to_be_collected|date:"d, M, Y"}}</small></span></td>
+                                <!--<td class="action"><span><small>{{i.order.date_to_be_collected|date:"d, M, Y"}}</small></span></td> -->
                                 
                                 <td class="editing_list align-middle">
                                     <ul>
